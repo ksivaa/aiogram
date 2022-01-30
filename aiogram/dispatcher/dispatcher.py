@@ -41,8 +41,8 @@ class Dispatcher(Router):
         super(Dispatcher, self).__init__(**kwargs)
 
         # Telegram API provides originally only one event type - Update
-        # For making easily interactions with events here is registered handler which helps
-        # to separate Update to different event types like Message, CallbackQuery and etc.
+        # For making easy interactions with events here is a registered handler that helps
+        # to separate Update to different event types like Message, CallbackQuery, etc.
         self.update = self.observers["update"] = TelegramEventObserver(
             router=self, event_name="update"
         )
@@ -76,7 +76,7 @@ class Dispatcher(Router):
     @parent_router.setter
     def parent_router(self, value: Router) -> None:
         """
-        Dispatcher is root Router then configuring parent router is not allowed
+        Dispatcher is root Router thus configuring parent router is not allowed
 
         :param value:
         :return:
@@ -133,7 +133,7 @@ class Dispatcher(Router):
         allowed_updates: Optional[List[str]] = None,
     ) -> AsyncGenerator[Update, None]:
         """
-        Endless updates reader with correctly handling any server-side or connection errors.
+        Endless updates reader with proper handling of any server-side or connection errors.
 
         So you may not worry that the polling will stop working.
         """
@@ -178,8 +178,8 @@ class Dispatcher(Router):
         Main updates listener
 
         Workflow:
-        - Detect content type and propagate to observers in current router
-        - If no one filter is pass - propagate update to child routers as Update
+        - Detect content type and propagate to observers in the current router
+        - If no filter is passed - propagate update to child routers as Update
 
         :param update:
         :param kwargs:
@@ -239,7 +239,7 @@ class Dispatcher(Router):
 
         except Exception as e:
             loggers.dispatcher.exception(
-                "Cause exception while process update id=%d by bot id=%d\n%s: %s",
+                "Caught exception while processing update id=%d by bot id=%d\n%s: %s",
                 update.update_id,
                 bot.id,
                 e.__class__.__name__,
@@ -283,7 +283,7 @@ class Dispatcher(Router):
             return await self.feed_update(bot, update, **kwargs)
         except Exception as e:
             loggers.dispatcher.exception(
-                "Cause exception while process update id=%d by bot id=%d\n%s: %s",
+                "Caught exception while processing update id=%d by bot id=%d\n%s: %s",
                 update.update_id,
                 bot.id,
                 e.__class__.__name__,
@@ -317,7 +317,7 @@ class Dispatcher(Router):
                 "Detected slow response into webhook.\n"
                 "Telegram is waiting for response only first 60 seconds and then re-send update.\n"
                 "For preventing this situation response into webhook returned immediately "
-                "and handler is moved to background and still processing update.",
+                "and handler is moved to background while still processing update.",
                 RuntimeWarning,
             )
             try:
@@ -417,7 +417,7 @@ class Dispatcher(Router):
         :param bots: Bot instances
         :param polling_timeout: Poling timeout
         :param backoff_config:
-        :param handle_as_tasks: Run task for each event and no wait result
+        :param handle_as_tasks: Run task for each event and don't wait for a result
         :param allowed_updates: List of the update types you want your bot to receive
         :param kwargs: contextual data
         :return:
