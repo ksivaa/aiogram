@@ -39,7 +39,7 @@ class TelegramEventObserver:
     Event observer for Telegram events
 
     Here you can register handler with filters or bounded filters which can be used as keyword arguments instead of writing full references when you register new handlers.
-    This observer will stops event propagation when first handler is pass.
+    This observer will stop event propagation when the first handler is passed.
     """
 
     def __init__(self, router: Router, event_name: str) -> None:
@@ -219,8 +219,8 @@ class TelegramEventObserver:
 
     async def trigger(self, event: TelegramObject, **kwargs: Any) -> Any:
         """
-        Propagate event to handlers and stops propagation on first match.
-        Handler will be called when all its filters is pass.
+        Propagate event to handlers and stop propagation on first match.
+        Handler will be called when all its filters are passed.
         """
         # Check globally defined filters before any other handler will be checked
         result, data = await self._handler.check(event, **kwargs)
