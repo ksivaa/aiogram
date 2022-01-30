@@ -5,15 +5,15 @@ Handling events
 *aiogram* includes Dispatcher mechanism.
 Dispatcher is needed for handling incoming updates from Telegram.
 
-With dispatcher you can do:
+With dispatcher you can:
 
 - Handle incoming updates;
-- Filter incoming events before it will be processed by specific handler;
+- Filter incoming events before they will be processed by a specific handler;
 - Modify event and related data in middlewares;
-- Separate bot functionality between different handlers, modules and packages
+- Separate bot functionality between different handlers, modules and packages.
 
-Dispatcher is also separated into two entities - Router and Dispatcher.
-Dispatcher is subclass of router and should be always is root router.
+Dispatcher is separated into two entities - Router and Dispatcher.
+Dispatcher is a subclass of Router and should always be a root router.
 
 .. toctree::
 
