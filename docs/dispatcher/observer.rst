@@ -2,9 +2,9 @@
 Observer
 ########
 
-Observer is used for filtering and handling different events. That is part of internal API with some public methods and is recommended to don't use methods is not listed here.
+Observer is used for filtering and handling different events. It is part of an internal API with some public methods and it is not recommended to use methods not listed here.
 
-In `aiogram` framework is available two variants of observer:
+In `aiogram` framework observer is available in two variants:
 
 - `EventObserver <#eventobserver>`__
 - `TelegramEventObserver <#telegrameventobserver>`__
